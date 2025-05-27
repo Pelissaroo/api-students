@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net/http"
 
+	"github.com/Pelissaroo/api-students/db"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 )
@@ -31,7 +32,7 @@ func main() {
 	// - DELETE /students/:id - Delete student
 
 	// Start server
-	e.Logger.Fatal(e.Start(":8080"))
+	e.Logger.Fatal(e.Start(":9090"))
 	//USAR CURL.EXE NO TERMINAL
 }
 
@@ -41,7 +42,12 @@ func getStudents(c echo.Context) error {
 }
 
 func createStudent(c echo.Context) error {
-	return c.String(http.StatusOK, "Creat student")
+	student := db.Student{}
+	if err := c.Bind(&student); err != nil {
+		return err
+	}
+	db.AddStudent(student)
+	return c.String(http.StatusOK, "Create student")
 }
 
 func getStudent(c echo.Context) error {
