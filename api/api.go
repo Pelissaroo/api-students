@@ -5,12 +5,22 @@ import (
 
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
+	echoSwagger "github.com/swaggo/echo-swagger"
+
+	_ "github.com/Pelissaroo/api-students/docs"
 )
 
 type API struct {
 	Echo *echo.Echo
 	DB   *db.StudentHandler
 }
+
+// @title Student API
+// @version 1.0
+// @description this is a sample server student API
+// @host localhost:9090
+// @BasePath /
+// @schemes http
 
 func NewServer() *API {
 
@@ -33,9 +43,10 @@ func (api *API) Start() error {
 }
 
 func (api *API) ConfigureRoutes() {
-	api.Echo.GET("/students", api.getStudents)
-	api.Echo.POST("/students", api.createStudent)
-	api.Echo.GET("/students/:id", api.getStudent)
-	api.Echo.PUT("/students/:id", api.updateStudent)
-	api.Echo.DELETE("students/:id", api.deleteStudent)
+	api.Echo.GET("/students", api.GetStudents)
+	api.Echo.POST("/students", api.CreateStudent)
+	api.Echo.GET("/students/:id", api.GetStudent)
+	api.Echo.PUT("/students/:id", api.UpdateStudent)
+	api.Echo.DELETE("students/:id", api.DeleteStudent)
+	api.Echo.GET("/swagger/*", echoSwagger.WrapHandler)
 }

@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/Pelissaroo/api-students/api"
+	_ "github.com/Pelissaroo/api-students/docs"
 	"github.com/rs/zerolog/log"
 )
 
