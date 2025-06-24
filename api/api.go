@@ -17,8 +17,8 @@ type API struct {
 
 // @title Student API
 // @version 1.0
-// @description this is a sample server student API
-// @host localhost:9090
+// @description This is a sample server Student API
+// @host localhost:8080
 // @BasePath /
 // @schemes http
 
@@ -39,7 +39,7 @@ func NewServer() *API {
 }
 
 func (api *API) Start() error {
-	return api.Echo.Start(":9090")
+	return api.Echo.Start(":8080")
 }
 
 func (api *API) ConfigureRoutes() {
