@@ -21,7 +21,6 @@ type API struct {
 // @host localhost:8080
 // @BasePath /
 // @schemes http
-
 func NewServer() *API {
 
 	e := echo.New()

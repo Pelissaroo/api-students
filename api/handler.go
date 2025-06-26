@@ -22,7 +22,6 @@ import (
 //	@Success        200 {object} schemas.StudentResponse
 //	@Failure        404
 //	@Router         /students [get]
-
 func (api *API) GetStudents(c echo.Context) error {
 	students, err := api.DB.GetStudents()
 	if err != nil {
@@ -55,7 +54,6 @@ func (api *API) GetStudents(c echo.Context) error {
 //	@Success        200 {object} schemas.StudentResponse
 //	@Failure        400
 //	@Router         /students [post]
-
 func (api *API) CreateStudent(c echo.Context) error {
 	studentReq := StudentRequest{}
 	if err := c.Bind(&studentReq); err != nil {
@@ -93,7 +91,6 @@ func (api *API) CreateStudent(c echo.Context) error {
 //	@Failure        404
 //	@Failure        500
 //	@Router         /students/{id} [get]
-
 func (api *API) GetStudent(c echo.Context) error {
 	id, err := strconv.Atoi(c.Param("id"))
 	if err != nil {
@@ -124,7 +121,6 @@ func (api *API) GetStudent(c echo.Context) error {
 //	@Failure        404
 //	@Failure        500
 //	@Router         /students/{id} [put]
-
 func (api *API) UpdateStudent(c echo.Context) error {
 	id, err := strconv.Atoi(c.Param("id"))
 	if err != nil {
@@ -166,7 +162,6 @@ func (api *API) UpdateStudent(c echo.Context) error {
 //	@Failure        404
 //	@Failure        500
 //	@Router         /students/{id} [delete]
-
 func (api *API) DeleteStudent(c echo.Context) error {
 	id, err := strconv.Atoi(c.Param("id"))
 	if err != nil {
